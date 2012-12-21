@@ -1,0 +1,43 @@
+Building from Sources
+---------------------
+Run these commands from the module root directory:
+
+# mvn clean
+# mvn compile
+# mvn package
+
+Installing to JIRA
+------------------
+
+1. Build the package from sources (see above)
+2. Copy the target/KrbCrowdAuthenticator-*.*.jar to JIRA_HOME/atlassian-jira/WEB-INF/lib
+3. Edit the JIRA_HOME/atlassian-jira/WEB-INF/classes/seraph-config.xml
+
+    change
+        <authenticator class="com.atlassian.jira.security.login.JiraSeraphAuthenticator"/>
+    to
+        <authenticator class="com.gooddata.authenticator.KrbCrowdAuthenticator"/>
+
+4. Copy the conf/gss.conf and conf/krb5.conf to JIRA_HOME/conf
+5. Edit the JIRA_HOME/conf/krb5.conf appropriately (specify the domains and servers)
+6. Restart JIRA
+
+Testing
+-------
+
+1. Copy the target/KrbCrowdAuthenticator-*.*.jar to a target location (server that has Krb5 configured)
+2. Copy the conf directory to the same target location (server that has Krb5 configured)
+3. Run
+
+        java -jar KrbCrowdAuthenticator-*.*.jar
+            -Djava.security.krb5.conf=conf/krb5.conf
+            -Djava.security.auth.login.config=conf/gss.conf com.gooddata.authenticator.test.GssExample
+
+    from the target location
+4. Specify valid/invalid Kerberos username password and see the authentication decision
+
+Troubleshooting
+---------------
+
+Reach to ZD (zd@gooddata.com | +420 777 640 979).
+

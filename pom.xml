@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.gooddata.authenticator</groupId>
+    <artifactId>KrbCrowdAuthenticator</artifactId>
+    <version>1.0</version>
+
+    <name>KrbCrowdAuthenticator</name>
+    <description>This is the gooddata.authenticator:KrbCrowdAuthenticator plugin for Atlassian JIRA.</description>
+    <packaging>jar</packaging>
+
+
+    <organization>
+        <name>GoodData</name>
+        <url>http://www.gooddata.com/</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The BSD License</name>
+            <url>http://www.opensource.org/licenses/bsd-license.php</url>
+            <distribution>repo</distribution>
+            <comments>The BSD License</comments>
+        </license>
+    </licenses>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>com.atlassian.jira</groupId>
+            <artifactId>jira-core</artifactId>
+            <version>${jira.version}</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.3.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>2.3.1</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+            <id>atlassian</id>
+            <url>https://m2proxy.atlassian.com/repository/public/</url>
+        </repository>
+    </repositories>
+
+    <developers>
+        <developer>
+            <id>zd</id>
+            <name>Zdenek Svoboda</name>
+            <email>zd@gooddata.com</email>
+            <organization>GoodData</organization>
+            <organizationUrl>http://gooddata.com/</organizationUrl>
+            <timezone>+2</timezone>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:gooddata/KrbCrowdAuthenticator.git</connection>
+        <url>scm:git:git@github.com:gooddata/KrbCrowdAuthenticator.git</url>
+        <developerConnection>scm:git:git@github.com:gooddata/KrbCrowdAuthenticator.git</developerConnection>
+    </scm>
+
+    <properties>
+        <jira.version>5.1.8</jira.version>
+    </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>gooddata</id>
+            <url>https://maven.gooddata.com/nexus/content/repositories/gooddata/</url>
+        </repository>
+        <snapshotRepository>
+            <id>gooddata-snapshots</id>
+            <url>https://maven.gooddata.com/nexus/content/repositories/gooddata-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+
+</project>
