@@ -29,7 +29,7 @@ Testing
 2. Copy the conf directory to the same target location (server that has Krb5 configured)
 3. Run
 
-        java -jar KrbCrowdAuthenticator-*.*.jar
+        java -classpath KrbCrowdAuthenticator-*.*.jar
             -Djava.security.krb5.conf=conf/krb5.conf
             -Djava.security.auth.login.config=conf/gss.conf com.gooddata.authenticator.test.GssExample
 
