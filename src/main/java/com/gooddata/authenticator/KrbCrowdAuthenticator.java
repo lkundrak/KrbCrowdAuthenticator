@@ -51,8 +51,10 @@ public class KrbCrowdAuthenticator extends JiraSeraphAuthenticator {
 
     /** The configuration files krb5.conf and gss.conf must be placed to the JIRA_HOME/conf */
     static {
-        System.setProperty("java.security.krb5.conf", "conf/krb5.conf");
-        System.setProperty("java.security.auth.login.config", "conf/gss.conf");
+        if (System.getProperty("java.security.krb5.conf") == null)
+            System.setProperty("java.security.krb5.conf", "conf/krb5.conf");
+        if (System.getProperty("java.security.auth.login.config") == null)
+            System.setProperty("java.security.auth.login.config", "conf/gss.conf");
     }
 
     /**
